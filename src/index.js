@@ -1,20 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import faker from 'faker';
 
-function showCurrentTime() {
-    return (new Date()).toLocaleTimeString();
-}
+import CommentDetail from './Comments';
+import ApprovalCard from './ApprovalCard';
+
 const App = () => {
-    const buttonText = {text:'Click Me!'};
-    const labelName = 'Enter Name:'
     return (
-        <div>
-            <label className="label" htmlFor="name">{labelName}</label>
-            <input id="name" type="text" />
-            <button style={{ backgroundColor: 'blue', color: 'white' }}>{buttonText.text}</button>
-            <div>{showCurrentTime()}</div>
+        <div className="ui container comments">
+            <ApprovalCard>
+                <CommentDetail author="Gosho" postedOn="Today at 14:30" avatar={faker.image.avatar()} content="Nice blog post!" />
+            </ApprovalCard>
+            <ApprovalCard>
+                <CommentDetail author="Pesho" postedOn="Yesterday at 10:00" avatar={faker.image.avatar()} content="Helpful blog post!" />
+            </ApprovalCard>
+            <ApprovalCard>
+                <CommentDetail author="Ivan" postedOn="Yesterday at 09:00" avatar={faker.image.avatar()} content="Not helpful at all!" />
+            </ApprovalCard>
         </div>
-    )
+    );
 }
 
 ReactDOM.render(
